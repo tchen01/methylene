@@ -16,4 +16,15 @@ The `.tex` files use the package `fontspec` which requires `XeLaTeX` (or similar
 ### beamer
 copy files to beamer folder of LaTeX: `/usr/share/texlive/texmf-dist/tex/latex/beamer/`, then run `texhash`
 
+### cv
+It should be fairly straightowrad to use this template.
+Note that some styling has been hard coded, but I plan to make it a bit more flexible in the future.
 
+### poster
+coming soon..
+
+### web
+The main contribution are the CSS files.
+Changing the HTML should be straighforward. 
+The CSS is meant to be compatiable with [pandoc](https://pandoc.org/).
+For an example of how pandoc can be used to quickly generate an entire website, you can look through the source code of [my website](https://github.com/tchen01/tchen01.github.io).
