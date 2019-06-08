@@ -1,0 +1,126 @@
+\documentclass[10pt]{article}
+
+\title{}
+\author{}
+\date{}
+
+%
+% Define page geometry
+%
+\usepackage[margin=1.25in, top=1in, bottom=1in]{geometry}
+
+%
+% Use XeLaTeX with fontspec to enable the use of more typefaces
+%
+\usepackage{fontspec}
+\setmainfont[
+    BoldFont = Vollkorn Bold,
+]{Vollkorn}
+\setsansfont[
+    BoldFont = Lato Bold,
+]{Lato}
+
+%
+% Define section title style and styling
+% Note that at the moment a lot of stylistic choices are "hard coded" to my preferences
+% I may eventually make them more flexible
+%
+\usepackage{titlesec}
+\titleformat{\section}{\vspace{-.5em}\sffamily\bfseries\large}{\thesection}{1em}{}[{\titlerule[0.3pt]}\vspace{-.1em}]
+
+\newcommand{\job}[2]{\textsf{\textbf{#1}} \dotfill \textit{#2}}
+\newcommand{\jobNoDate}[1]{\textsf{\textbf{#1}}}
+\newcommand{\details}[2]{\par #1\hfill #2 \vspace{0.2cm}}
+\newcommand{\course}[3]{\par #1 ({\footnotesize #2})\dotfill \textit{#3}}
+
+%
+% Define custom color for links
+%
+\usepackage{xcolor}
+\definecolor{Base02}{HTML}{073662}
+
+%
+% Enable clickable links and PDF metadata
+%
+\usepackage{hyperref}
+\hypersetup{
+    pdfauthor={Emmy Noether},
+    pdftitle={Emmy Noether CV},
+    pdfsubject={Curriculum vitae},
+    pdfkeywords={Emmy,Noether,CV},
+    hidelinks=true,       
+    colorlinks=true,
+    linkcolor=Base02,
+    urlcolor=Base02,
+}
+
+%
+% Allow multiple bibliographies with entries in reverse-chronological order
+% this is based on a solution from: https://tex.stackexchange.com/a/37850/153736
+%
+\usepackage[backend=bibtex,style=numeric,sorting=ydnt]{biblatex}
+
+% Count total number of entries in each refsection
+\AtDataInput{%
+  \csnumgdef{entrycount:\therefsection}{%
+    \csuse{entrycount:\therefsection}+1}}
+
+% Print the labelnumber as the total number of entries in the
+% current refsection, minus the actual labelnumber, plus one
+\DeclareFieldFormat{labelnumber}{\mkbibdesc{#1}}    
+\newrobustcmd*{\mkbibdesc}[1]{%
+  \number\numexpr\csuse{entrycount:\therefsection}+1-#1\relax}
+
+\addbibresource[label=pubs_bib]{publications.bib}
+\addbibresource[label=talks_bib]{talks.bib}
+
+%
+% General formatting 
+%
+\setlength{\parskip}{.25em}
+\setlength{\parindent}{0em}
+
+\begin{document}
+
+%
+% Set up page heading
+%
+\section*{\Large{Emmy Noether}}
+{\color{Base02}
+\href{mailto:noether@abc.edu}{noether@abc.edu} \\
+\href{https://noether.com}{https://noether.com}
+}
+
+
+\section*{Education}
+\job{University of Erlangen}{Oct. 1904 - 1907}
+\details{Ph.D. in Mathematics}{}
+
+\vspace{-.2cm}
+
+\begin{refsection}[pubs_bib]
+    \nocite{
+        noether_21,
+        noether_18,
+    }
+    \printbibliography[title={Publications}]
+\end{refsection}
+\vspace{-1em}
+
+\begin{refsection}[talks_bib]
+    \nocite{
+        noether_talk,
+    }
+    \printbibliography[title={Talks}]
+\end{refsection}
+
+\vspace{-.2cm}
+
+\section*{Teaching}
+\course{Lecturer, Gruppentheorie und hyperkomplexe Zahlen}{MATH 777}{Winter 1924}
+\course{Lecturer, Nichtkommutative Algebra}{MATH 888}{Summer 1928}
+
+\section*{Awards \& Honors}
+\course{Ackermann–Teubner Memorial Award}{Leipzig}{1932}
+
+\end{document}
