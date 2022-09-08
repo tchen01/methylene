@@ -1,21 +1,29 @@
-\usepackage{fontspec}
+\usepackage[no-math]{fontspec}
 
+\setmainfont[
+    BoldFont = Vollkorn Bold,
+    ItalicFont = Vollkorn Italic,
+    BoldItalicFont={Vollkorn Bold Italic},
+    RawFeature=+lnum,
+]{Vollkorn}
 
 \setsansfont[
-   BoldFont={Lato}
-]{Lato Light}
+    BoldFont = Lato Bold,
+    FontFace={l}{n}{*-Light},
+    FontFace={l}{it}{*-Light Italic},
+]{Lato}
 
-%\usefonttheme[onlymath]{serif}
+\usefonttheme{serif}
 
-\setbeamerfont*{title}{family=\fontspec{Vollkorn Bold},size*={18pt}{20pt}}
-\setbeamerfont*{author}{family=\fontspec{Vollkorn},size*={12pt}{12pt}}
-\setbeamerfont*{institute}{family=\fontspec{Vollkorn},size*={8pt}{12pt}}
-\setbeamerfont*{date}{family=\fontspec{Vollkorn Italic},size*={8pt}{10pt}}
+\setbeamerfont*{title}{family=\sffamily\bfseries,size*={18pt}{20pt}}
+\setbeamerfont*{author}{family=\sffamily,size*={12pt}{12pt}}
+\setbeamerfont*{institute}{family=\sffamily,size*={8pt}{12pt}}
+\setbeamerfont*{date}{family=\sffamily\itshape,size*={8pt}{10pt}}
 
 
 
-\setbeamerfont*{frametitle}{family=\fontspec{Vollkorn Bold},size=\large}
-\setbeamerfont*{framesubtitle}{family=\fontspec{Vollkorn},size=\small}
+\setbeamerfont*{frametitle}{family=\sffamily\bfseries,size=\large}
+\setbeamerfont*{framesubtitle}{family=\sffamily,size=\small}
 %\setbeamerfont*{footnote}{family=\fontspec{Vollkorn},size=\tiny}
 %\setbeamerfont*{caption name}{family=\fontspec{Vollkorn},size*={10pt}{10pt}}
 %\setbeamerfont*{caption}{family=\fontspec{Vollkorn Light},size*={10pt}{10pt}}
